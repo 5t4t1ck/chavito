@@ -10,6 +10,7 @@ Juego realizado en PilasEngine
 :License: BY-NC-SA_
 :Source: https://github.com/5t4t1ck/chavito
 :Contribución de @hugoruscitti a mejorar el código
+
 Descripción
 ===========
 
