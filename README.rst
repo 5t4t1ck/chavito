@@ -1,9 +1,9 @@
 =============================
-Mini Juegos en Pilasengine
+CHAVITO
 =============================
 
 -------------------------------------------
-Ejercicios Básicos de Juegos en Pilasengine
+Juego realizado en PilasEngine
 -------------------------------------------
 
 :Author: Statick 
