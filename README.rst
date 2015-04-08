@@ -20,4 +20,6 @@ Galeria
 
 **Chavito** Autor Statick
 
-.. image:: http://i.imgur.com/HowCkDA.png 
+.. image:: http://i.imgur.com/y40XkAQ.png
+
+.. image:: http://i.imgur.com/PHDuku5.png 
