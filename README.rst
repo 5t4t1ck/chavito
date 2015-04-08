@@ -22,5 +22,5 @@ Galeria
 
 .. image:: http://i.imgur.com/y40XkAQ.png
 .. image:: http://i.imgur.com/PHDuku5.png
-.. image:: http://foro.pilas-engine.com.ar/uploads/default/198/d83ed9be20419c31.pngi
+.. image:: http://foro.pilas-engine.com.ar/uploads/default/198/d83ed9be20419c31.png
 .. video:: https://www.youtube.com/watch?v=QE_lT8dnBpM     
