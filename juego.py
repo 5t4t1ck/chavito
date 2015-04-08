@@ -1,18 +1,18 @@
 # -*- coding:utf-8 -*-
 """
-Autor: Martin Cueva
-Objetivo del Juego: Atrapar la mayor cantidad de tortas de jamon que caen del cielo
+Autor: @Statick
+Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen del cielo
 
 """
 
 #Importamos la Biblioteca de Pilas-Engine
 import pilasengine
+import random
 
 #Iniciando PilasEngine en un sola variable parara facilitar la programación
 pilas = pilasengine.iniciar()
 
-#Agregando el puntaje
-puntaje = pilas.actores.Puntaje(-280, 200, color = pilas.colores.blanco)
+
 
 #Declarando la clase Chavo
 class Chavo(pilasengine.actores.Actor):
@@ -44,17 +44,17 @@ class Chavo(pilasengine.actores.Actor):
         if self.x >= 280:
                 self.x = 280
 
-#Creando la clase Galleta
-class Galleta(pilasengine.actores.Aceituna):
+#Creando la clase Torta de Jamon
+class Torta_de_Jamon(pilasengine.actores.Aceituna):
 
-    #Inicializando la clase Galleta
+    #Inicializando la clase Torta de Jamon
     def iniciar(self):
         self.imagen = "data/torta_de_jamon.png"
         self.aprender(pilas.habilidades.PuedeExplotarConHumo)
-        self.x = pilas.azar(-200, 200)
+        self.x = pilas.azar(-280, 280)
         self.y = 290
         self.velocidad = pilas.azar(5, 30)/10.0
-
+       
     #Creando función actualizar
     def actualizar(self):
         self.rotacion += 5
@@ -67,26 +67,37 @@ class Galleta(pilasengine.actores.Aceituna):
 #Agregando Fondo
 fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar("data/vecindad_fondo.jpg")
-#Creando el grupo enemigos
-enemigos = pilas.actores.Grupo()
 
-#Creando la función enemigo, esta función permite crear los enemigos
-def crear_enemigo():
-    actor = Galleta(pilas)
-    enemigos.agreagar(actor)
+#Creando el grupo tortas
+tortas = pilas.actores.Grupo()
+
+#Creando la función crear_torta, esta función permite crear los enemigos
+def crear_torta():
+    actor = Torta_de_Jamon(pilas)
+    tortas.agreagar(actor)
 
 #Agregar la tarea de crear el enemigo cada 0.5 segundos
-pilas.tareas.siempre(1, crear_enemigo)
+pilas.tareas.siempre(1, crear_torta)
 
 #crear el objeto chavo
 chavo = Chavo(pilas)
 
-#Crear la función que permite al objeto chavo comer las galletas
-def comer_pastel(chavo, Galleta):
-    Galleta.eliminar()
+#Agregando el Puntaje
+puntaje = pilas.actores.Puntaje(-280, 200, color = pilas.colores.blanco)    
 
-#pilas.colisiones.agreagar(chavo, Galleta, comer_pastel)
 
-pilas.avisar(u"enemigas")
+#Crear la función que permite al objeto chavo comer las Tortas de Jamon
+def cuando_toca_torta(v, i):
+    i.eliminar()
+    puntaje.aumentar(1)
+    puntaje.escala = 2
+    puntaje.escala = [1],0.2
+    puntaje.rotacion = random.randint(30, 60)
+    puntaje.rotacion = [0], 0.2
+    
+pilas.colisiones.agregar(chavo, tortas, cuando_toca_torta)
+
+
+pilas.avisar(u"Intente atrapar la mayor cantidad de Tortas de Jamon")
 
 pilas.ejecutar()
