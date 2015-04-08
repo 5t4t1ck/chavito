@@ -1,23 +1,22 @@
 # -*- coding:utf-8 -*-
 """
-Autor: @Statick
+Autor: @Statick, Martin Cueva
 Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen del cielo
 
 """
 
-#Importamos la Biblioteca de Pilas-Engine
+#Importamos la Biblioteca de Pilas-Engine y el módulo random
 import pilasengine
 import random
 
 #Iniciando PilasEngine en un sola variable parara facilitar la programación
 pilas = pilasengine.iniciar()
 
-
+#Reinicia el juego si existe algun inconveniente
 pilas.reiniciar_si_cambia(__file__)
 
 #Declarando la clase Chavo
 class Chavo(pilasengine.actores.Actor):
-
 
     #Creando la función iniciar del actor chavo
     def iniciar(self):
@@ -90,7 +89,6 @@ chavo = Chavo(pilas)
 #Agregando el Puntaje
 puntaje = pilas.actores.Puntaje(-280, 200, color = pilas.colores.blanco)
 
-
 #Crear la función que permite al objeto chavo comer las Tortas de Jamon
 def cuando_toca_torta(v, i):
     i.eliminar()
@@ -100,11 +98,11 @@ def cuando_toca_torta(v, i):
     puntaje.rotacion = random.randint(30, 60)
     puntaje.rotacion = [0], 0.2
 
-
+#Se crea las colisiones entre los actores pilas, torta y se llama a la función cuanto toca torta
 pilas.colisiones.agregar("chavo", "torta", cuando_toca_torta)
 
-
+#Muestra un mensaje en pantalla con indicaciones de que se trata el Juego
 pilas.avisar(u"Intente atrapar la mayor cantidad de Tortas de Jamon")
 
+#Permite al motor de pilas ejecutarse
 pilas.ejecutar()
-
