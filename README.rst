@@ -13,7 +13,7 @@ Ejercicios Básicos de Juegos en Pilasengine
 Descripción
 ===========
 
-El Chavito tiene que atrapar las tortas de jamon para ganar puntos
+El Chavito tiene que atrapar las Tortas de Jamon para ganar puntos
 
 Galeria
 =======
