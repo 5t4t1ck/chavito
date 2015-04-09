@@ -12,7 +12,7 @@ import random
 #Iniciando PilasEngine en un sola variable parara facilitar la programación
 pilas = pilasengine.iniciar()
 
-#Reinicia el juego si existe algun cambio en el código del juego 
+#Reinicia el juego si existe algun inconveniente
 pilas.reiniciar_si_cambia(__file__)
 
 #Declarando la clase Chavo
@@ -68,49 +68,20 @@ class Torta_de_Jamon(pilasengine.actores.Aceituna):
         if self.y < -300:
             self.eliminar()
 
-#Creando la clase Bruja del 71
-class Bruja_del_71(pilasengine.actores.Aceituna):
-
-    def iniciar(self):
-        self.imagen = "data/bruja_del_71.png"
-        self.aprender(pilas.habilidades.PuedeExplotarConHumo)
-        self.x = pilas.azar(-280, 280)
-	self.y = 290
-	self.velocidd = pilas.azar(5, 30)/10.0
-	self.etiquetas.agregar('bruja')
-	self.figura_de_clolision = pilas.fisica.Rectangulo(0, 0, 60, 40, sensor=True)
-    
-    #Creando función actualizar
-    def actualizar(self):
-	self.rotacion += 5
-	self.y -= self.velocidad
-
-	#Eliminar el objeto cuando sale de la pantalla.
-	if self.y < -300:
-		self.eliminar()
-
 #Agregando Fondo
 fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar("data/vecindad_fondo.jpg")
 
-#Creando el grupo tortas y bruja
+#Creando el grupo tortas
 tortas = pilas.actores.Grupo()
-brujas = pilas.actores.Grupo()
 
 #Creando la función crear_torta, esta función permite crear los enemigos
 def crear_torta():
     actor = Torta_de_Jamon(pilas)
     tortas.agreagar(actor)
 
-def crear_bruja():
-    actor = Bruja_del_71(pilas)
-    brujas.agregar(actor)
-
-#Agregar la tarea de crear el tortas cada segundo
+#Agregar la tarea de crear el enemigo cada 0.5 segundos
 pilas.tareas.siempre(1, crear_torta)
-
-#Agregar la tarea de crear brujas cada 2 segundos
-pilas.tareas.siempre(2, crear_bruja)
 
 #crear el objeto chavo
 chavo = Chavo(pilas)
@@ -127,16 +98,8 @@ def cuando_toca_torta(v, i):
     puntaje.rotacion = random.randint(30, 60)
     puntaje.rotacion = [0], 0.2
 
-#Crear la función que permite al objeto chavo eliminarse cuando toca las Brujas del 71
-def cuando_toca_bruja(v, i):
-    chavo.eliminar()
-  
-
-#Se crea las colisiones entre los actores torta y chavo, se llama a la función cuanto_toca_torta
+#Se crea las colisiones entre los actores pilas, torta y se llama a la función cuanto toca torta
 pilas.colisiones.agregar("chavo", "torta", cuando_toca_torta)
-
-#Se crea las colisiones entre los actores bruja y chavo, se llama a la funcion cuando_toca_bruja
-pilas.colisiones.agregar("chavo", "bruja", cuando_toca_bruja)
 
 #Muestra un mensaje en pantalla con indicaciones de que se trata el Juego
 pilas.avisar(u"Intente atrapar la mayor cantidad de Tortas de Jamon")
