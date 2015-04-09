@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-Autor: @Statick, Martin Cueva
+Autor: @Statick_ds
 Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen del cielo
 
 """
@@ -71,23 +71,24 @@ class Torta_de_Jamon(pilasengine.actores.Aceituna):
 #Creando la clase Bruja del 71
 class Bruja_del_71(pilasengine.actores.Aceituna):
 
+    #Inicializando la clase Torta de Jamon
     def iniciar(self):
         self.imagen = "data/bruja_del_71.png"
         self.aprender(pilas.habilidades.PuedeExplotarConHumo)
         self.x = pilas.azar(-280, 280)
-	self.y = 290
-	self.velocidd = pilas.azar(5, 30)/10.0
-	self.etiquetas.agregar('bruja')
-	self.figura_de_clolision = pilas.fisica.Rectangulo(0, 0, 60, 40, sensor=True)
-    
+        self.y = 290
+        self.velocidad = pilas.azar(5, 30)/10.0
+        self.etiquetas.agregar('bruja')
+        self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 60, 40, sensor=True)
+
     #Creando función actualizar
     def actualizar(self):
-	self.rotacion += 5
-	self.y -= self.velocidad
+        self.rotacion += 5
+        self.y -= self.velocidad
 
-	#Eliminar el objeto cuando sale de la pantalla.
-	if self.y < -300:
-		self.eliminar()
+        #Eliminar el objeto cuando sale de la pantalla.
+        if self.y < -300:
+            self.eliminar()
 
 #Agregando Fondo
 fondo = pilas.fondos.Fondo()
@@ -103,8 +104,8 @@ def crear_torta():
     tortas.agreagar(actor)
 
 def crear_bruja():
-    actor = Bruja_del_71(pilas)
-    brujas.agregar(actor)
+    actor1 = Bruja_del_71(pilas)
+    tortas.agreagar(actor1)
 
 #Agregar la tarea de crear el tortas cada segundo
 pilas.tareas.siempre(1, crear_torta)
@@ -129,8 +130,12 @@ def cuando_toca_torta(v, i):
 
 #Crear la función que permite al objeto chavo eliminarse cuando toca las Brujas del 71
 def cuando_toca_bruja(v, i):
-    chavo.eliminar()
-  
+    i.eliminar()
+    puntaje.reducir(1)
+    puntaje.escala= 2
+    puntaje.escala = [1],2.0
+    puntaje.rotacion = random.randint(30, 60)
+    puntaje.rotacion = [0], 0.2
 
 #Se crea las colisiones entre los actores torta y chavo, se llama a la función cuanto_toca_torta
 pilas.colisiones.agregar("chavo", "torta", cuando_toca_torta)
