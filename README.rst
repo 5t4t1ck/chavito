@@ -23,4 +23,4 @@ Galeria
 
 .. image:: http://i.imgur.com/XJ9WYYA.png
 .. image:: http://foro.pilas-engine.com.ar/uploads/default/198/d83ed9be20419c31.png
-.. image:: http://i.imgur.com/y40XkAQ.png     
+
