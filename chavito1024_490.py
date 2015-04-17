@@ -10,7 +10,7 @@ import pilasengine
 import random
 
 #Iniciando PilasEngine en un sola variable parara facilitar la programación
-pilas = pilasengine.iniciar(1024, 490)
+pilas = pilasengine.iniciar(800, 490)
 
 #Reinicia el juego si existe algun cambio en el código del juego 
 pilas.reiniciar_si_cambia(__file__)
@@ -35,16 +35,16 @@ class Chavo(pilasengine.actores.Actor):
             self.x -= 5
             self.espejado = True
 
-        if self.x <= -483:
-                self.x = -483
+        if self.x <= -370:
+                self.x = -370
 
 	#Haciendo que el actor chavo se mueva a la izquierda con la tecla izquierda
         if pilas.control.derecha:
             self.x += 5
             self.espejado = False
 
-        if self.x >= 483:
-                self.x = 483
+        if self.x >= 370:
+                self.x = 370
 
 #Creando la clase Torta de Jamon
 class Torta_de_Jamon(pilasengine.actores.Aceituna):
@@ -53,7 +53,7 @@ class Torta_de_Jamon(pilasengine.actores.Aceituna):
     def iniciar(self):
         self.imagen = "data/torta_de_jamon.png"
         self.aprender(pilas.habilidades.PuedeExplotarConHumo)
-        self.x = pilas.azar(-480, 480)
+        self.x = pilas.azar(-368, 368)
         self.y = 290
         self.velocidad = pilas.azar(5, 30)/10.0
         self.etiquetas.agregar('torta')
@@ -117,7 +117,7 @@ pilas.tareas.siempre(2, crear_bruja)
 chavo = Chavo(pilas)
 
 #Agregando el Puntaje
-puntaje = pilas.actores.Puntaje(-480, 200, color = pilas.colores.blanco)
+puntaje = pilas.actores.Puntaje(-365, 200, color = pilas.colores.blanco)
 
 #Crear la función que permite al objeto chavo comer las Tortas de Jamon
 def cuando_toca_torta(v, i):
