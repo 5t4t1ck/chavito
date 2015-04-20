@@ -1,21 +1,16 @@
 # -*- coding:utf-8 -*-
 """
 Autor: @Statick_ds
-Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen del cielo
-
+Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen 
+		    y evitar tocar las fotografias de la Bruja del 71 
 """
 
 #Importamos la Biblioteca de Pilas-Engine y el módulo random
 import pilasengine
 import random
 
-<<<<<<< HEAD
 #Iniciando PilasEngine en un sola variable para facilitar la programación
 pilas = pilasengine.iniciar(1024, 490)
-=======
-#Iniciando PilasEngine en un sola variable parara facilitar la programación
-pilas = pilasengine.iniciar(800, 490)
->>>>>>> 79c3158be29233093cb6e861506fd81ec12d33ad
 
 #Reinicia el juego si existe algun cambio en el código del juego 
 pilas.reiniciar_si_cambia(__file__)
