@@ -10,7 +10,7 @@ import pilasengine
 import random
 
 #Iniciando PilasEngine en un sola variable para facilitar la programación
-pilas = pilasengine.iniciar(1024, 490)
+pilas = pilasengine.iniciar(800, 490)
 
 #Reinicia el juego si existe algun cambio en el código del juego 
 pilas.reiniciar_si_cambia(__file__)
@@ -60,7 +60,7 @@ class Torta_de_Jamon(pilasengine.actores.Aceituna):
     def iniciar(self):
         self.imagen = "data/torta_de_jamon.png"
         self.aprender(pilas.habilidades.PuedeExplotarConHumo)
-        self.x = pilas.azar(-368, 368)
+        self.x = pilas.azar(-370, 370)
         self.y = 290
         self.velocidad = pilas.azar(5, 30)/10.0
         self.etiquetas.agregar('torta')
@@ -82,7 +82,7 @@ class Bruja_del_71(pilasengine.actores.Aceituna):
     def iniciar(self):
         self.imagen = "data/bruja_del_71.png"
         self.aprender(pilas.habilidades.PuedeExplotarConHumo)
-        self.x = pilas.azar(-280, 280)
+        self.x = pilas.azar(-370, 370)
         self.y = 290
         self.velocidad = pilas.azar(5, 30)/10.0
         self.etiquetas.agregar('bruja')
