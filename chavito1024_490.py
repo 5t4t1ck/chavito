@@ -9,7 +9,7 @@ Objetivo del Juego: Atrapar la mayor cantidad de Tortas de Jamon que caen del ci
 import pilasengine
 import random
 
-#Iniciando PilasEngine en un sola variable parara facilitar la programación
+#Iniciando PilasEngine en un sola variable para facilitar la programación
 pilas = pilasengine.iniciar(1024, 490)
 
 #Reinicia el juego si existe algun cambio en el código del juego 
@@ -45,6 +45,13 @@ class Chavo(pilasengine.actores.Actor):
 
         if self.x >= 483:
                 self.x = 483
+
+	#Haciendo que el actor chavo se mueva hacia arriba con la tecla arriba
+
+	if pilas.control.arriba:
+	    self.y += 5
+	    
+	    self.y -= 5
 
 #Creando la clase Torta de Jamon
 class Torta_de_Jamon(pilasengine.actores.Aceituna):
