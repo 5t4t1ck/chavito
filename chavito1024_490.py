@@ -15,7 +15,10 @@ import pilasengine
 # Iniciando PilasEngine en un sola variable para facilitar la programación
 pilas = pilasengine.iniciar(800, 490)
 
-pilas.reiniciar_si_cambia(sys.argv[0])
+try:
+    pilas.reiniciar_si_cambia(sys.argv[0])
+except OSError:
+    pilas.reiniciar_si_cambia(__file__)
 
 # Declarando la clase Chavo
 
